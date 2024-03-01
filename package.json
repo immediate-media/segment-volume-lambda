@@ -1,0 +1,14 @@
+{
+  "name": "segment-volume-lambda",
+  "version": "1.0.0",
+  "description": "Pushing volume data from segment into datadog",
+  "scripts": {
+    "process:volumes": "node ./bin/process-segment-volumes.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@datadog/datadog-api-client": "^1.22.0",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5"
+  }
+}

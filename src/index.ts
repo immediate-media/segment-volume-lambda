@@ -1,6 +1,7 @@
-const { processor } = require('../lib/processor');
+import { processor } from './processor';
+import * as dotenv from 'dotenv';
 
-require('dotenv').config();
+dotenv.config();
 
 (async () => {
     try {

@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+      - yarn install --frozen-lockfile --non-interactive
+
+  build:
+    commands:
+      - yarn run lint
+      - yarn run test --ci --coverage
+  post_build:
+    commands:
+      - ./bin/deploy.sh

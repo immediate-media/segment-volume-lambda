@@ -1,0 +1,21 @@
+service: mobilesiteassociations
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+
+package:
+  individually: true
+
+functions:
+  server:
+    name: ${self:service}-${self:provider.stage}
+    handler: src/index.handler
+    environment:
+      LOG_LEVEL: ${env:LOG_LEVEL, 'info'}
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          integration: lambda-proxy

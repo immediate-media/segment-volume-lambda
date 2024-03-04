@@ -1,12 +1,10 @@
-const { client, v2 } = require("@datadog/datadog-api-client");
-
-
+import { client, v2 } from "@datadog/datadog-api-client";
 
 const datadogClient = {
-    sendGaugeMetric: (series) => {
+    sendGaugeMetric: (series: v2.MetricSeries) => {
         const apiInstance = new v2.MetricsApi(client.createConfiguration());
 
-        const params = {
+        const params: v2.MetricsApiSubmitMetricsRequest = {
             body: {
                 series: [
                     series
@@ -18,13 +16,13 @@ const datadogClient = {
 
         apiInstance
             .submitMetrics(params)
-            .then((data) => {
+            .then((data: v2.IntakePayloadAccepted) => {
                 console.log(
                     "API called successfully. Returned data: " + JSON.stringify(data)
                 );
             })
-            .catch((error) => console.error(error));
+            .catch((error: any) => console.error(error));
     }
 };
 
-module.exports = { datadogClient };
+export default datadogClient;

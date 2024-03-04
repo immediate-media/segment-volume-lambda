@@ -1,14 +1,18 @@
-const util = require('util');
-const axios = require('axios');
+import * as util from 'util';
+import axios from 'axios';
 
-const apiUrl = 'https://eu1.api.segmentapis.com';
+const apiUrl: string = 'https://eu1.api.segmentapis.com';
 
-const segmentClient = {
+interface SegmentClient {
+    getVolumes: () => Promise<any>;
+}
+
+const segmentClient: SegmentClient = {
     getVolumes: async () => {
-        const currentTime = new Date();
+        const currentTime: Date = new Date();
 
-        const pathFormat = `/events/volume?granularity=minute&startTime=%s&endTime=%s&groupBy[]=sourceId`;
-        const path = util.format(
+        const pathFormat: string = `/events/volume?granularity=minute&startTime=%s&endTime=%s&groupBy[]=sourceId`;
+        const path: string = util.format(
             pathFormat,
             toISO8601(new Date(currentTime.getTime() - (60 * 60 * 1000))),
             toISO8601(currentTime)
@@ -24,15 +28,15 @@ const segmentClient = {
     }
 };
 
-const toISO8601 = (date) => {
+const toISO8601 = (date: Date): string => {
     return date.toISOString();
 }
 
-const getHeaders = () => {
+const getHeaders = (): Record<string, string> => {
     return {
         'Authorization': `Bearer ${process.env.SEGMENT_API_KEY}`,
         'Content-Type': 'application/json'
     }
 }
 
-module.exports = { segmentClient };
+export { segmentClient };

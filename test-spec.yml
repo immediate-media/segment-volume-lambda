@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+      - yarn install --frozen-lockfile --non-interactive
+
+  build:
+    commands:
+      # The current lambda pipeline is a bit odd in that the test stages should
+      # come after each deployment stage, but they do not. So the first test
+      # stage does not point at any environment, the second at staging and the
+      # third at pre-production. We only want to run our integration tests
+      # against real environments, hence the condition below.
+      - |
+        if [ -n "$ENVIRONMENT" ]; then
+          yarn test:integration
+        else
+          echo "No ENVIRONMENT set, skipping integration tests"
+        fi

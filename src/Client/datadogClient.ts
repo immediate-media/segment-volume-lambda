@@ -1,4 +1,5 @@
 import { client, v2 } from "@datadog/datadog-api-client";
+import {ApiException} from "@datadog/datadog-api-client/dist/packages/datadog-api-client-common";
 
 const datadogClient = {
     sendGaugeMetric: (series: v2.MetricSeries) => {
@@ -12,16 +13,9 @@ const datadogClient = {
             }
         };
 
-        console.log('Sending gauge metric to Datadog: ' + JSON.stringify(params));
-
-        apiInstance
-            .submitMetrics(params)
-            .then((data: v2.IntakePayloadAccepted) => {
-                console.log(
-                    "API called successfully. Returned data: " + JSON.stringify(data)
-                );
-            })
-            .catch((error: any) => console.error(error));
+        apiInstance.submitMetrics(params).catch((error: any) => {
+            console.error('Error submitting metrics:', error instanceof ApiException ? error.body : String(error));
+        });
     }
 };
 

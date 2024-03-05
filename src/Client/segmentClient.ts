@@ -22,8 +22,7 @@ const segmentClient: SegmentClient = {
             const response = await axios.get(apiUrl + path, { headers: getHeaders() });
             return response.data; // Return the data
         } catch (error) {
-            console.error('Error:', error);
-            throw error; // Rethrow the error to propagate it
+            console.error('Error:', (error instanceof Error) ? error.message : String(error));
         }
     }
 };

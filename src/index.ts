@@ -1,12 +1,14 @@
-import { processor } from './processor';
+import processor from './Controller/processingController';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-(async () => {
+export const handler = async () => {
     try {
-        await processor();
+        await processor.process();
     } catch (error) {
         console.error(error);
     }
-})();
+};
+
+handler();

@@ -9,13 +9,12 @@ package:
   individually: true
 
 functions:
-  server:
+  rateHandler:
     name: ${self:service}-${self:provider.stage}
     handler: src/index.handler
     environment:
       LOG_LEVEL: ${env:LOG_LEVEL, 'info'}
     events:
-      - http:
-          path: /{proxy+}
-          method: ANY
-          integration: lambda-proxy
+      - schedule:
+          rate: rate(1 minute)
+          enabled: true

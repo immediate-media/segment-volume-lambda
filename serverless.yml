@@ -21,7 +21,6 @@ provider:
 
 plugins:
   - serverless-esbuild
-  - serverless-domain-manager
 
 custom:
   customDomain:

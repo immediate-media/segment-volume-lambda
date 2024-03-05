@@ -39,4 +39,4 @@ const getHeaders = (): Record<string, string> => {
     }
 }
 
-export { segmentClient };
+export default segmentClient;

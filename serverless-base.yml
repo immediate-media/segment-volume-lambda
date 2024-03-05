@@ -1,4 +1,4 @@
-service: mobilesiteassociations
+service: segmentvolumelambda
 frameworkVersion: '3'
 
 provider:

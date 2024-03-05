@@ -1,5 +1,4 @@
 import { v2 } from "@datadog/datadog-api-client";
-import * as process from "process";
 
 interface EventVolume {
     time: string;
@@ -25,4 +24,4 @@ const eventVolume = {
     }
 };
 
-export { eventVolume };
+export default eventVolume;

@@ -7,6 +7,7 @@
     "dev": "serverless offline start --config serverless-dev.yml",
     "process:volumes": "node ./dist/index.js",
     "lint": "eslint .",
+    "serve": "serverless offline start --config serverless-dev.yml",
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },

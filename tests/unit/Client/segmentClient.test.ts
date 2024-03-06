@@ -37,22 +37,16 @@ describe('segmentClient', () => {
     });
 
     describe('when request fails', () => {
-        it('logs the error', async () => {
+        it('throws SegmentClientError', async () => {
 
             // Mock axios.get to throw an error
             const errorMessage = 'Failed to fetch data';
             axios.get = jest.fn().mockRejectedValue(new Error(errorMessage));
 
-            // Spy on console.error
-            const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
-
-            await segmentClient.getVolumes();
+            await expect(segmentClient.getVolumes()).rejects.toThrow('Error fetching data: ' + errorMessage);
 
             expect(axios.get).toHaveBeenCalledTimes(1);
-            expect(consoleErrorSpy).toHaveBeenCalledWith('Error:', errorMessage);
 
-            // Restore the original implementation of console.error
-            consoleErrorSpy.mockRestore();
         });
     });
 });

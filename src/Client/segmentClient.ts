@@ -1,5 +1,6 @@
 import * as util from 'util';
 import axios from 'axios';
+import { SegmentClientError } from "./Error/segmentClientError";
 
 const apiUrl: string = 'https://eu1.api.segmentapis.com';
 
@@ -22,7 +23,9 @@ const segmentClient: SegmentClient = {
             const response = await axios.get(apiUrl + path, { headers: getHeaders() });
             return response.data; // Return the data
         } catch (error) {
-            console.error('Error:', (error instanceof Error) ? error.message : String(error));
+            throw new SegmentClientError(
+                'Error fetching data: ' + ((error instanceof Error) ? error.message : String(error))
+            );
         }
     }
 };

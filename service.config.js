@@ -1,9 +1,9 @@
 module.exports = {
-  name: 'mobile-site-associations',
-  resourceName: 'mobile-site-associations',
+  name: 'segment-volume-lambda',
+  resourceName: 'segment-volume-lambda',
   deployAs: 'lambda',
-  backendBasePath: '/mobile-site-associations',
-  port: 7784,
+  backendBasePath: '/segment-volume-lambda',
+  port: 7785,
   app: {
     script: 'yarn dev',
     watch: 'src',

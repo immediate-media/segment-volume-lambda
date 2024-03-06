@@ -1,0 +1,21 @@
+{
+  "data": {
+    "data": {
+      "path": "/observability/event_volume/v2.json",
+      "query": {
+        "workspaceId": "redacted-workspace-id",
+        "startTime": "2024-03-05T12:00:00Z",
+        "endTime": "2024-03-05T13:00:00Z",
+        "granularity": "MINUTE",
+        "groupBy": [
+          "sourceID"
+        ]
+      },
+      "result": [],
+      "pagination": {
+        "current": "MA==",
+        "totalEntries": 0
+      }
+    }
+  }
+}

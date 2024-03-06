@@ -23,12 +23,6 @@ plugins:
   - serverless-esbuild
 
 custom:
-  customDomain:
-    domainName: ${self:service}-${env:ENVIRONMENT}.${env:DNS_ZONE}
-    basePath: ''
-    endpointType: 'regional'
-    createRoute53Record: true
-    certificateName: ${env:DOMAIN_CERT}
   esbuild:
     target: node20
     external:

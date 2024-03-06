@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "serve": "serverless offline start --config serverless-dev.yml",
     "test": "jest",
+    "test:integration": "jest integration -c jest.integration.config.js",
     "typecheck": "tsc --noEmit"
   },
   "license": "MIT",

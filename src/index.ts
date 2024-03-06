@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-export const handler = async () => {
+const handler = async () => {
     try {
         await processor.process();
     } catch (error) {
@@ -11,4 +11,4 @@ export const handler = async () => {
     }
 };
 
-handler();
+export default handler;

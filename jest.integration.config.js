@@ -5,9 +5,6 @@ module.exports = {
   modulePathIgnorePatterns: ['/dist/'],
   testMatch: ['**/tests/integration/**/?(*.)+(spec|test).[jt]s?(x)'],
   testTimeout: 60000,
-  testEnvironmentOptions: {
-    url: process.env.INTEGRATION_TESTS_BASE_URL,
-  },
   reporters: ['default', 'github-actions'],
   transformIgnorePatterns: ['node_modules/(?!@immediate_media)'],
 };

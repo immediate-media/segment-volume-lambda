@@ -1,0 +1,20 @@
+service: ${file(./serverless-base.yml):service}
+frameworkVersion: ${file(./serverless-base.yml):frameworkVersion}
+package: ${file(./serverless-base.yml):package}
+functions: ${file(./serverless-base.yml):functions}
+
+provider:
+  name: ${file(./serverless-base.yml):provider.name}
+  runtime: ${file(./serverless-base.yml):provider.runtime}
+  stage: dev
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+custom:
+  serverless-offline:
+  esbuild:
+    target: node20
+    external:
+      - dd-trace

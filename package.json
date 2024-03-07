@@ -1,0 +1,61 @@
+{
+  "name": "segment-volume-lambda",
+  "version": "1.0.0",
+  "description": "Pushing volume data from segment into datadog",
+  "scripts": {
+    "depcheck": "./bin/depcheck.sh",
+    "dev": "serverless offline start --config serverless-dev.yml",
+    "process:volumes": "node ./dist/index.js",
+    "lint": "eslint .",
+    "preserve": "rimraf dist",
+    "test": "jest",
+    "test:integration": "jest integration -c jest.integration.config.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/immediate-media/segment-volume-lambda.git"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {
+    "@datadog/datadog-api-client": "^1.22.0",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.5",
+    "@babel/plugin-transform-runtime": "^7.23.4",
+    "@babel/preset-env": "^7.23.5",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@types/aws-lambda": "^8.10.130",
+    "@types/jest": "^29.5.10",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "commitlint": "^12.1.4",
+    "depcheck": "^1.4.7",
+    "esbuild": "^0.19.8",
+    "eslint": "^8.55.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "eslint-plugin-jest-formatting": "^3.1.0",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "husky": "^4.2.5",
+    "jest": "^29.7.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^3.1.0",
+    "rimraf": "^3.0.2",
+    "serverless": "^3.38.0",
+    "serverless-esbuild": "^1.51.0",
+    "serverless-offline": "^13.3.3",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.3.3"
+  }
+}

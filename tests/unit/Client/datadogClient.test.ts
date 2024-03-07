@@ -1,7 +1,6 @@
 import { GAUGE } from "@datadog/datadog-api-client/dist/packages/datadog-api-client-v2/models/MetricIntakeType";
 import datadogClient from "../../../src/Client/datadogClient";
 import { client, v2 } from "@datadog/datadog-api-client";
-import { ApiException } from "@datadog/datadog-api-client/dist/packages/datadog-api-client-common";
 
 // Mock the Datadog API client
 jest.mock("@datadog/datadog-api-client", () => {
@@ -14,6 +13,7 @@ jest.mock("@datadog/datadog-api-client", () => {
             MetricsApi: jest.fn(() => metricsApiInstance)// Mock MetricsApi constructor
         },
         client: {
+            ...jest.requireActual('@datadog/datadog-api-client').client,
             createConfiguration: jest.fn().mockReturnValue({
                 apiKey: 'test',
                 appKey: 'test'
@@ -63,7 +63,7 @@ describe('datadogClient', () => {
             // Mock the submitMetrics method to throw an error
             const errorMessage = 'Failed to submit metrics';
             const metricsApiInstance = new v2.MetricsApi(client.createConfiguration());
-            metricsApiInstance.submitMetrics = jest.fn().mockRejectedValue(new ApiException(403, errorMessage));
+            metricsApiInstance.submitMetrics = jest.fn().mockRejectedValue(new client.ApiException(403, errorMessage));
             (v2.MetricsApi as jest.Mock).mockImplementation(() => metricsApiInstance);
 
             // Spy on console.error

@@ -1,10 +1,9 @@
 import axios from 'axios';
-import handler from '../../src/index';
+import { handler } from '../../src';
 import * as mockSegmentResponse from '../assets/mockSegmentResponse.json';
 import * as emptySegmentResponse from '../assets/emptySegmentResponse.json';
 import { client, v2 } from "@datadog/datadog-api-client";
 import {GAUGE} from "@datadog/datadog-api-client/dist/packages/datadog-api-client-v2/models/MetricIntakeType";
-import {ApiException} from "@datadog/datadog-api-client/dist/packages/datadog-api-client-common";
 
 jest.useFakeTimers().setSystemTime(new Date('2024-01-01T12:00:00Z'));
 // Mock the request to the Segment API
@@ -21,6 +20,7 @@ jest.mock("@datadog/datadog-api-client", () => {
             MetricsApi: jest.fn(() => metricsApiInstance)// Mock MetricsApi constructor
         },
         client: {
+            ...jest.requireActual('@datadog/datadog-api-client').client,
             createConfiguration: jest.fn().mockReturnValue({
                 apiKey: 'test',
                 appKey: 'test'
@@ -144,7 +144,7 @@ describe('handler', () => {
         )
 
         const metricsApiInstance = new v2.MetricsApi(client.createConfiguration());
-        metricsApiInstance.submitMetrics = jest.fn().mockRejectedValue(new ApiException(403, 'Failed to submit metrics'));
+        metricsApiInstance.submitMetrics = jest.fn().mockRejectedValue(new client.ApiException(403, 'Failed to submit metrics'));
         (v2.MetricsApi as jest.Mock).mockImplementation(() => metricsApiInstance);
 
         const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();

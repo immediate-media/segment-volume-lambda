@@ -14,8 +14,6 @@ plugins:
 
 custom:
   serverless-offline:
-    httpPort: ${env:PORT, 3100}
-    noPrependStageInUrl: true
   esbuild:
     target: node20
     external:

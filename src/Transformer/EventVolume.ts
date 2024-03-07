@@ -7,16 +7,10 @@ interface EventVolume {
 
 const eventVolume = {
     convertToMetricPoints: (eventVolumes: EventVolume[]): v2.MetricPoint[] => {
-        const points: v2.MetricPoint[] = [];
-
-        for (const volume of eventVolumes) {
-            points.push({
-                timestamp: new Date(volume.time).getTime() / 1000, // Convert to seconds
-                value: volume.count
-            });
-        }
-
-        return points;
+        return eventVolumes.map((volume) => ({
+            timestamp: new Date(volume.time).getTime() / 1000, // Convert to seconds
+            value: volume.count
+        }))
     }
 };
 

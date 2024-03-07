@@ -7,7 +7,7 @@
     "dev": "serverless offline start --config serverless-dev.yml",
     "process:volumes": "node ./dist/index.js",
     "lint": "eslint .",
-    "serve": "serverless offline start --config serverless-dev.yml",
+    "preserve": "rimraf dist",
     "test": "jest",
     "test:integration": "jest integration -c jest.integration.config.js",
     "typecheck": "tsc --noEmit"
@@ -16,6 +16,11 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/immediate-media/segment-volume-lambda.git"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "dependencies": {
     "@datadog/datadog-api-client": "^1.22.0",
@@ -29,8 +34,6 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@types/aws-lambda": "^8.10.130",
     "@types/jest": "^29.5.10",
-    "@types/node-fetch": "^2.6.9",
-    "@types/original-url": "^1.2.3",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
     "commitlint": "^12.1.4",
@@ -46,12 +49,10 @@
     "eslint-plugin-prettier": "^5.0.1",
     "husky": "^4.2.5",
     "jest": "^29.7.0",
-    "node-fetch": "^2.6.1",
     "nodemon": "^2.0.7",
     "prettier": "^3.1.0",
     "rimraf": "^3.0.2",
     "serverless": "^3.38.0",
-    "serverless-domain-manager": "^7.3.1",
     "serverless-esbuild": "^1.51.0",
     "serverless-offline": "^13.3.3",
     "ts-jest": "^29.1.1",

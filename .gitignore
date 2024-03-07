@@ -1,3 +1,4 @@
 .esbuild/
+.env
 node_modules/
 dist/

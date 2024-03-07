@@ -16,5 +16,5 @@ functions:
       LOG_LEVEL: ${env:LOG_LEVEL, 'info'}
     events:
       - schedule:
-          rate: rate(5 minute)
+          rate: rate(1 minute)
           enabled: true

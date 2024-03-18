@@ -22,6 +22,9 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
+  "engines": {
+    "node": ">=20.8.1 <=21"
+  },
   "dependencies": {
     "@datadog/datadog-api-client": "^1.22.0",
     "axios": "^1.6.7",

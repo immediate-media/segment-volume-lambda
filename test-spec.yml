@@ -15,9 +15,4 @@ phases:
       # stage does not point at any environment, the second at staging and the
       # third at pre-production. We only want to run our integration tests
       # against real environments, hence the condition below.
-      - |
-        if [ -n "$ENVIRONMENT" ]; then
-          yarn test:integration
-        else
-          echo "No ENVIRONMENT set, skipping integration tests"
-        fi
+      - yarn test:integration

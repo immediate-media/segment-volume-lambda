@@ -16,5 +16,7 @@ jobs:
         run: yarn typecheck
       - name: Test
         run: yarn test
+      - name: Integration test
+        run: yarn test:integration
       - name: Check for unused dependencies
         run: yarn depcheck

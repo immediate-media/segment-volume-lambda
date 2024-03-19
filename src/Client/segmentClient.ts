@@ -20,6 +20,10 @@ const segmentClient: SegmentClient = {
         );
 
         try {
+            console.log(apiUrl + path);
+            let key = process.env.SEGMENT_PUBLIC_API_KEY + "";
+            console.log(key.substring(0,8));
+            console.log(key.substring(key.length - 8, key.length));
             const response = await axios.get(apiUrl + path, { headers: getHeaders() });
             return response.data; // Return the data
         } catch (error) {

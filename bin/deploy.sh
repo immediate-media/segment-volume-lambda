@@ -17,5 +17,5 @@ fi
 export SLS_DEBUG=*
 
 if [ $CODEBUILD_BUILD_SUCCEEDING = 1 ]; then
-  serverless deploy --stage $STAGE --verbose --conceal
+  serverless deploy --stage $STAGE --verbose --conceal --force
 fi

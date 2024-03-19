@@ -14,6 +14,8 @@ functions:
     handler: src/index.handler
     environment:
       LOG_LEVEL: ${env:LOG_LEVEL, 'info'}
+      SEGMENT_PUBLIC_API_KEY: ${env:SEGMENT_PUBLIC_API_KEY}
+      DD_API_KEY: ${env:DD_API_KEY}
     events:
       - schedule:
           rate: rate(5 minutes)

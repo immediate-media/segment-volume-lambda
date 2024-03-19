@@ -36,7 +36,7 @@ const toISO8601 = (date: Date): string => {
 
 const getHeaders = (): Record<string, string> => {
     return {
-        'Authorization': `Bearer ${process.env.SEGMENT_API_KEY}`,
+        'Authorization': `Bearer ${process.env.SEGMENT_PUBLIC_API_KEY}`,
         'Content-Type': 'application/json'
     }
 }

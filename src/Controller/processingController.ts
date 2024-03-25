@@ -20,7 +20,6 @@ const processor: ProcessingController = {
                 await datadogClient.sendGaugeMetric(ddBody);
             }
         } catch (error) {
-            console.log(typeof error)
             let message = '';
             switch (true) {
                 case error instanceof SegmentClientError:

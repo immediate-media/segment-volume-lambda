@@ -14,14 +14,14 @@ jest.mock("../../../src/Client/segmentClient",  () => {
             data: {
                 result: [
                     {
-                        source: {id: 'abc'},
+                        source: {id: 'abc', name: 'ABC'},
                         series: [
                             {time: timestampOne, count: 1},
                             {time: timestampTwo, count: 2},
                         ]
                     },
                     {
-                        source: {id: 'def'},
+                        source: {id: 'def', name: 'DEF'},
                         series: [
                             {time: timestampOne, count: 3},
                             {time: timestampTwo, count: 4},
@@ -43,10 +43,10 @@ describe("processor", () => {
         expect(datadogClient.sendGaugeMetric).toHaveBeenNthCalledWith(1, metricSeriesFactory.buildGaugeMetricSeries([
             {timestamp: convertToSeconds(timestampOne), value: 1},
             {timestamp: convertToSeconds(timestampTwo), value: 2},
-        ], 'abc'));
+        ], 'abc', 'ABC'));
         expect(datadogClient.sendGaugeMetric).toHaveBeenNthCalledWith(2, metricSeriesFactory.buildGaugeMetricSeries([
             {timestamp: convertToSeconds(timestampOne), value: 3},
             {timestamp: convertToSeconds(timestampTwo), value: 4},
-        ], 'def'));
+        ], 'def', 'DEF'));
     });
 });

@@ -16,7 +16,7 @@
           "source": {
             "id": "redacted-source-id-bbcgf-preprod-js",
             "slug": "good_food_pre_production_javascript",
-            "name": "gf_javascript_preproduction"
+            "name": "Good Food Pre Production Javascript"
           },
           "total": 5,
           "series": [
@@ -46,7 +46,7 @@
           "source": {
             "id": "redacted-source-id-bbcgf-preprod-react-native",
             "slug": "good_food_pre_production_react_native_app",
-            "name": "gf_react_native_app_preproduction"
+            "name": "Good Food Pre Production React Native App"
           },
           "total": 1,
           "series": [

@@ -15,7 +15,8 @@ const processor: ProcessingController = {
             for (const volume of volumes.data.result) {
                 let ddBody = metricSeriesFactory.buildGaugeMetricSeries(
                     eventVolume.convertToMetricPoints(volume.series),
-                    volume.source.id
+                    volume.source.id,
+                    volume.source.name
                 );
                 await datadogClient.sendGaugeMetric(ddBody);
             }

@@ -17,6 +17,6 @@ describe('metricSeriesFactory', () => {
         expect(series.metric).toEqual('segment.event.volume.gauge');
         expect(series.type).toEqual(GAUGE);
         expect(series.points).toEqual(points);
-        expect(series.tags).toEqual(['source:segment','source_name:Segment']);
+        expect(series.tags).toEqual(['source:segment','sourcename:Segment']);
     });
 });

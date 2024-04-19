@@ -10,9 +10,9 @@ describe('metricSeriesFactory', () => {
             }
         ];
         const source = 'segment';
-        const source_name = 'Segment';
+        const sourcename = 'Segment';
 
-        const series = metricSeriesFactory.buildGaugeMetricSeries(points, source, source_name);
+        const series = metricSeriesFactory.buildGaugeMetricSeries(points, source, sourcename);
 
         expect(series.metric).toEqual('segment.event.volume.gauge');
         expect(series.type).toEqual(GAUGE);

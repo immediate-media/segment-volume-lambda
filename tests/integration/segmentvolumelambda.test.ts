@@ -67,7 +67,7 @@ describe('handler', () => {
         ];
         expectedSeriesOne.tags = [
             'source:redacted-source-id-bbcgf-preprod-js',
-            'source_name:Good Food Pre Production Javascript'
+            'sourcename:Good Food Pre Production Javascript'
         ];
 
         const expectedSeriesTwo = new v2.MetricSeries();
@@ -98,7 +98,7 @@ describe('handler', () => {
         ];
         expectedSeriesTwo.tags = [
             'source:redacted-source-id-bbcgf-preprod-react-native',
-            'source_name:Good Food Pre Production React Native App'
+            'sourcename:Good Food Pre Production React Native App'
         ];
 
         expect(metricsApiInstance.submitMetrics).toHaveBeenNthCalledWith(

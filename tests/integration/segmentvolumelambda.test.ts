@@ -65,7 +65,10 @@ describe('handler', () => {
             },
 
         ];
-        expectedSeriesOne.tags = [`source:redacted-source-id-bbcgf-preprod-js`];
+        expectedSeriesOne.tags = [
+            'source:redacted-source-id-bbcgf-preprod-js',
+            'sourcename:Good Food Pre Production Javascript'
+        ];
 
         const expectedSeriesTwo = new v2.MetricSeries();
         expectedSeriesTwo.metric = 'segment.event.volume.gauge';
@@ -93,7 +96,10 @@ describe('handler', () => {
             },
 
         ];
-        expectedSeriesTwo.tags = ['source:redacted-source-id-bbcgf-preprod-react-native'];
+        expectedSeriesTwo.tags = [
+            'source:redacted-source-id-bbcgf-preprod-react-native',
+            'sourcename:Good Food Pre Production React Native App'
+        ];
 
         expect(metricsApiInstance.submitMetrics).toHaveBeenNthCalledWith(
             1,

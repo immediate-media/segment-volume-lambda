@@ -10,12 +10,13 @@ describe('metricSeriesFactory', () => {
             }
         ];
         const source = 'segment';
+        const sourcename = 'Segment';
 
-        const series = metricSeriesFactory.buildGaugeMetricSeries(points, source);
+        const series = metricSeriesFactory.buildGaugeMetricSeries(points, source, sourcename);
 
         expect(series.metric).toEqual('segment.event.volume.gauge');
         expect(series.type).toEqual(GAUGE);
         expect(series.points).toEqual(points);
-        expect(series.tags).toEqual(['source:segment']);
+        expect(series.tags).toEqual(['source:segment','sourcename:Segment']);
     });
 });
